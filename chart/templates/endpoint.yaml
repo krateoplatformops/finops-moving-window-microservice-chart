@@ -1,0 +1,8 @@
+apiVersion: v1
+kind: Secret
+type: Opaque
+metadata:
+  name: {{ include "finops-moving-window-microservice.fullname" . }}-endpoint
+stringData:
+  server-url: http://{{ include "finops-moving-window-microservice.fullname" . }}.{{ .Release.Namespace }}.svc:{{ .Values.service.port }}
+  insecure: "true"
